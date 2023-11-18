@@ -1,5 +1,6 @@
 import 'package:e_commerce_app/components/shopping_list_tile.dart';
 import 'package:e_commerce_app/pages/cart_page.dart';
+import 'package:e_commerce_app/pages/shop_page.dart';
 import 'package:flutter/material.dart';
 
 class AppDrawer extends StatelessWidget {
@@ -25,6 +26,10 @@ class AppDrawer extends StatelessWidget {
             iconData: Icons.home,
             onTap: () {
               Navigator.pop(context);
+              Navigator.pushNamed(
+                context,
+                ShopPage.routeName,
+              );
             },
           ),
           ShoppingListTile(

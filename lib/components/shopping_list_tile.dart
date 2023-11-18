@@ -14,7 +14,10 @@ class ShoppingListTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      title: Text(title),
+      selectedColor: Theme.of(context).colorScheme.primary,
+      title: Text(
+        title,
+      ),
       leading: Icon(iconData),
       onTap: onTap,
     );

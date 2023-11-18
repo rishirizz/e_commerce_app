@@ -1,6 +1,7 @@
 import 'package:e_commerce_app/pages/cart_page.dart';
 import 'package:e_commerce_app/pages/shop_page.dart';
 import 'package:e_commerce_app/pages/splash_page.dart';
+import 'package:e_commerce_app/state_management/shop_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => null,
+      create: (context) => ShopDataProvider(),
       child: MaterialApp(
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
