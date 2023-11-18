@@ -1,3 +1,5 @@
+import 'package:e_commerce_app/pages/cart_page.dart';
+import 'package:e_commerce_app/pages/shop_page.dart';
 import 'package:e_commerce_app/pages/splash_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -19,6 +21,18 @@ class MyApp extends StatelessWidget {
           useMaterial3: true,
         ),
         home: const SplashPage(),
+        onGenerateRoute: (RouteSettings settings) {
+          debugPrint('build route for ${settings.name}');
+          var routes = <String, WidgetBuilder>{
+            SplashPage.routeName: (BuildContext context) => const SplashPage(),
+            ShopPage.routeName: (BuildContext context) => const ShopPage(),
+            CartPage.routeName: (BuildContext context) => const CartPage(),
+          };
+          WidgetBuilder builder = routes[settings.name]!;
+          return MaterialPageRoute(
+            builder: (ctx) => builder(ctx),
+          );
+        },
       ),
     );
   }
