@@ -1,3 +1,4 @@
+import 'package:e_commerce_app/constants/constants.dart';
 import 'package:e_commerce_app/models/products.dart';
 import 'package:flutter/material.dart';
 
@@ -5,16 +6,16 @@ class ShopDataProvider extends ChangeNotifier {
   //list of the products
   final List<Product> _products = [
     Product(
-      name: 'Maggi',
-      price: 12.0,
-      description: 'Noodles',
-      // image: '',
+      name: 'Pizza',
+      price: 320.0,
+      description: kAboutPizza,
+      image: 'assets/pizza.jpg',
     ),
     Product(
-      name: 'Top Ramen',
-      price: 12.0,
-      description: 'Noodles',
-      // image: '',
+      name: 'Sandwich',
+      price: 120.0,
+      description: kAboutSandwichPage,
+      image: 'assets/sandwich.jpg',
     ),
   ];
 

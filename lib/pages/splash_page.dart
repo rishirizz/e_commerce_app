@@ -18,7 +18,7 @@ class _SplashPageState extends State<SplashPage> {
 
   goToShopsPage() {
     Future.delayed(const Duration(seconds: 2), () {
-      Navigator.pushNamed(context, ShopPage.routeName);
+      Navigator.pushReplacementNamed(context, ShopPage.routeName);
     });
   }
 
