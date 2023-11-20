@@ -1,7 +1,9 @@
 import 'package:e_commerce_app/components/shopping_list_tile.dart';
 import 'package:e_commerce_app/pages/cart_page.dart';
 import 'package:e_commerce_app/pages/shop_page.dart';
+import 'package:e_commerce_app/state_management/shop_data.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({
@@ -31,6 +33,7 @@ class AppDrawer extends StatelessWidget {
                 ShopPage.routeName,
               );
             },
+            trailingWidget: null,
           ),
           ShoppingListTile(
             title: 'CART',
@@ -42,6 +45,18 @@ class AppDrawer extends StatelessWidget {
                 CartPage.routeName,
               );
             },
+            trailingWidget: CircleAvatar(
+              child: Consumer<ShopDataProvider>(
+                builder: (context, ShopDataProvider shopDataProvider, child) =>
+                    Text(
+                  shopDataProvider.cartItems.length.toString(),
+                  style: const TextStyle(
+                    fontSize: 15,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
+            ),
           ),
         ],
       ),

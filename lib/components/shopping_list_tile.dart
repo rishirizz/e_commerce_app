@@ -4,11 +4,13 @@ class ShoppingListTile extends StatelessWidget {
   final String title;
   final IconData iconData;
   final void Function()? onTap;
+  final Widget? trailingWidget;
   const ShoppingListTile({
     super.key,
     required this.title,
     required this.iconData,
     required this.onTap,
+    required this.trailingWidget,
   });
 
   @override
@@ -19,6 +21,7 @@ class ShoppingListTile extends StatelessWidget {
         title,
       ),
       leading: Icon(iconData),
+      trailing: trailingWidget,
       onTap: onTap,
     );
   }
