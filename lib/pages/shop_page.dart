@@ -1,4 +1,5 @@
 import 'package:e_commerce_app/components/navigation_drawer.dart';
+import 'package:e_commerce_app/pages/cart_page.dart';
 import 'package:e_commerce_app/state_management/shop_data.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -16,16 +17,24 @@ class ShopPage extends StatelessWidget {
           appBar: AppBar(
             title: const Text('SHOP PAGE'),
             actions: [
-              Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 20,
-                ),
-                child: Badge(
-                  label: (shopDataProvider.cartItems.isNotEmpty)
-                      ? Text(shopDataProvider.cartItems.length.toString())
-                      : null,
-                  child: const Icon(
-                    Icons.shopping_cart,
+              GestureDetector(
+                onTap: () {
+                  Navigator.pushNamed(
+                    context,
+                    CartPage.routeName,
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
+                  child: Badge(
+                    label: (shopDataProvider.cartItems.isNotEmpty)
+                        ? Text(shopDataProvider.cartItems.length.toString())
+                        : null,
+                    child: const Icon(
+                      Icons.shopping_cart,
+                    ),
                   ),
                 ),
               ),
@@ -91,32 +100,102 @@ class ShopPage extends StatelessWidget {
                                 ),
                                 Row(
                                   crossAxisAlignment: CrossAxisAlignment.center,
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   children: [
                                     Text(
                                       '\u{20B9} ${shopDataProvider.products[index].price.toStringAsFixed(2)}',
                                       style: TextStyle(
-                                        color:
-                                            Theme.of(context).colorScheme.primary,
+                                        color: Theme.of(context)
+                                            .colorScheme
+                                            .primary,
                                         fontSize: 18,
                                         fontWeight: FontWeight.w500,
                                       ),
                                     ),
-                                    FloatingActionButton(
-                                      heroTag: null,
-                                      onPressed: () {
-                                        Provider.of<ShopDataProvider>(
-                                          context,
-                                          listen: false,
-                                        ).addItemToCart(
-                                            shopDataProvider.products[index]);
-                                      },
-                                      child: const Icon(Icons.add),
+                                    Row(
+                                      children: [
+                                        FloatingActionButton(
+                                          heroTag: null,
+                                          onPressed: () {
+                                            Provider.of<ShopDataProvider>(
+                                              context,
+                                              listen: false,
+                                            ).removeItemFromCart(
+                                                shopDataProvider
+                                                    .products[index]);
+                                          },
+                                          child: const Icon(Icons.remove),
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
+                                        if (shopDataProvider
+                                            .cartItems.isNotEmpty)
+                                          // Text(
+                                          //   shopDataProvider
+                                          //       .products[index].quantity
+                                          //       .toString(),
+                                          // ),
+                                          const SizedBox(
+                                            width: 10,
+                                          ),
+                                        FloatingActionButton(
+                                          heroTag: null,
+                                          onPressed: () {
+                                            Provider.of<ShopDataProvider>(
+                                              context,
+                                              listen: false,
+                                            ).addItemToCart(shopDataProvider
+                                                .products[index]);
+                                          },
+                                          child: const Icon(Icons.add),
+                                        ),
+                                      ],
                                     ),
                                   ],
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+                child: InkWell(
+                  onTap: () {
+                    Navigator.pushNamed(
+                      context,
+                      CartPage.routeName,
+                    );
+                  },
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        border: Border.all(
+                          width: 2,
+                          color: Theme.of(context).colorScheme.primaryContainer,
+                        ),
+                        borderRadius: BorderRadius.circular(20)),
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20.0,
+                          vertical: 10.0,
+                        ),
+                        child: Text(
+                          'GO TO CART',
+                          style: TextStyle(
+                            color: Theme.of(context)
+                                .colorScheme
+                                .onPrimaryContainer,
+                            fontSize: 20,
+                            fontWeight: FontWeight.w500,
                           ),
                         ),
                       ),

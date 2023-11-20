@@ -25,17 +25,15 @@ class _CartPageState extends State<CartPage> {
           body: Padding(
             padding: const EdgeInsets.fromLTRB(10, 20, 10, 10),
             child: SizedBox(
-              height: MediaQuery.of(context).size.height * 0.60,
               child: ListView.builder(
                 shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
                 itemCount: shopDataProvider.cartItems.length,
                 itemBuilder: (BuildContext context, int index) => Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: SizedBox(
                     width: MediaQuery.of(context).size.width * 0.85,
                     child: Card(
-                      elevation: 6,
+                      elevation: 3,
                       shape: const RoundedRectangleBorder(
                         borderRadius: BorderRadius.all(
                           Radius.circular(20),
@@ -47,16 +45,6 @@ class _CartPageState extends State<CartPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            Expanded(
-                              child: Image.asset(
-                                shopDataProvider.cartItems[index].image,
-                                width: double.infinity,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 20,
-                            ),
                             Text(
                               shopDataProvider.cartItems[index].name,
                               style: TextStyle(
@@ -64,17 +52,10 @@ class _CartPageState extends State<CartPage> {
                                     .colorScheme
                                     .onPrimaryContainer,
                                 fontWeight: FontWeight.bold,
-                                fontSize: 30,
                               ),
                             ),
                             const SizedBox(
                               height: 8,
-                            ),
-                            Text(
-                              shopDataProvider.cartItems[index].description,
-                            ),
-                            const SizedBox(
-                              height: 10,
                             ),
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
