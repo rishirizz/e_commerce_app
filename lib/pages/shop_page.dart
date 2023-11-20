@@ -15,6 +15,21 @@ class ShopPage extends StatelessWidget {
             Scaffold(
           appBar: AppBar(
             title: const Text('SHOP PAGE'),
+            actions: [
+              Padding(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 20,
+                ),
+                child: Badge(
+                  label: (shopDataProvider.cartItems.isNotEmpty)
+                      ? Text(shopDataProvider.cartItems.length.toString())
+                      : null,
+                  child: const Icon(
+                    Icons.shopping_cart,
+                  ),
+                ),
+              ),
+            ],
           ),
           drawer: const AppDrawer(),
           body: Padding(
@@ -47,6 +62,7 @@ class ShopPage extends StatelessWidget {
                                 shopDataProvider.products[index].image,
                                 width: double.infinity,
                                 fit: BoxFit.cover,
+                                height: 300,
                               ),
                             ),
                             const SizedBox(
@@ -85,6 +101,7 @@ class ShopPage extends StatelessWidget {
                                   ),
                                 ),
                                 FloatingActionButton(
+                                  heroTag: null,
                                   onPressed: () {
                                     showDialog(
                                       context: context,
@@ -104,10 +121,10 @@ class ShopPage extends StatelessWidget {
                                             ElevatedButton(
                                               onPressed: () {
                                                 Provider.of<ShopDataProvider>(
-                                                        context)
-                                                    .addItemToCart(
-                                                        shopDataProvider
-                                                            .products[index]);
+                                                  context,
+                                                  listen: false,
+                                                ).addItemToCart(shopDataProvider
+                                                    .products[index]);
                                                 Navigator.pop(context);
                                               },
                                               child: const Text('YES'),

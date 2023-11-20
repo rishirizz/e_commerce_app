@@ -6,16 +6,52 @@ class ShopDataProvider extends ChangeNotifier {
   //list of the products
   final List<Product> _products = [
     Product(
+      name: 'Boiled Egg',
+      price: 60.0,
+      description: kAboutBoiledEgg,
+      image: kBoiledEggImage,
+    ),
+    Product(
+      name: 'Chinese',
+      price: 220.0,
+      description: kAboutChinese,
+      image: kChineseImage,
+    ),
+    Product(
+      name: 'Momos',
+      price: 120.0,
+      description: kAboutMomo,
+      image: kMomoImage,
+    ),
+    Product(
+      name: 'Pastry',
+      price: 85.0,
+      description: kAboutPastry,
+      image: kPastryImage,
+    ),
+    Product(
       name: 'Pizza',
-      price: 320.0,
-      description: kAboutPizza,
-      image: 'assets/pizza.jpg',
+      price: 499.0,
+      description: kAboutSandwich,
+      image: kPizzaImage,
+    ),
+    Product(
+      name: 'Pudding',
+      price: 145.0,
+      description: kAboutPudding,
+      image: kPuddingImage,
+    ),
+    Product(
+      name: 'Salad',
+      price: 92.0,
+      description: kAboutSalad,
+      image: kSaladImage,
     ),
     Product(
       name: 'Sandwich',
-      price: 120.0,
-      description: kAboutSandwichPage,
-      image: 'assets/sandwich.jpg',
+      price: 220.0,
+      description: kAboutSandwich,
+      image: kSandwichImage,
     ),
   ];
 
