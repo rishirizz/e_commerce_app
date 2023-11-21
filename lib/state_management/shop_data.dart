@@ -65,14 +65,35 @@ class ShopDataProvider extends ChangeNotifier {
   List<Product> get cartItems => _cartItems;
 
   //add items to the cart
-  addItemToCart(Product product) {
-    _cartItems.add(product);
+  addItemToCart(Product product, String productName, int quantity) {
+    bool found = false;
+    for (Product product in _cartItems) {
+      if (product.name == productName) {
+        product.quantity += quantity;
+        found = true;
+        break;
+      }
+    }
+    if (!found) {
+      _cartItems.add(
+        product..quantity = 1, //first time, add quantity as 1.
+      );
+    }
     notifyListeners();
   }
 
   //remove items from the cart
-  removeItemFromCart(Product product) {
-    _cartItems.remove(product);
+  removeItemFromCart(String productName) {
+    for (Product product in _cartItems) {
+      if (product.name == productName) {
+        if (product.quantity > 1) {
+          product.quantity--;
+        } else {
+          _cartItems.remove(product..quantity = 0); //change qty back to 0
+        }
+        break;
+      }
+    }
     notifyListeners();
   }
 }

@@ -123,31 +123,33 @@ class ShopPage extends StatelessWidget {
                                               listen: false,
                                             ).removeItemFromCart(
                                                 shopDataProvider
-                                                    .products[index]);
+                                                    .products[index].name);
                                           },
                                           child: const Icon(Icons.remove),
                                         ),
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        if (shopDataProvider
-                                            .cartItems.isNotEmpty)
-                                          // Text(
-                                          //   shopDataProvider
-                                          //       .products[index].quantity
-                                          //       .toString(),
-                                          // ),
-                                          const SizedBox(
-                                            width: 10,
-                                          ),
+                                        Text(
+                                          shopDataProvider
+                                              .products[index].quantity
+                                              .toString(),
+                                        ),
+                                        const SizedBox(
+                                          width: 10,
+                                        ),
                                         FloatingActionButton(
                                           heroTag: null,
                                           onPressed: () {
                                             Provider.of<ShopDataProvider>(
                                               context,
                                               listen: false,
-                                            ).addItemToCart(shopDataProvider
-                                                .products[index]);
+                                            ).addItemToCart(
+                                              shopDataProvider.products[index],
+                                              shopDataProvider
+                                                  .products[index].name,
+                                              1, // add a qty each time
+                                            );
                                           },
                                           child: const Icon(Icons.add),
                                         ),
