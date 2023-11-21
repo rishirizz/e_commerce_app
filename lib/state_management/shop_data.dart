@@ -96,4 +96,14 @@ class ShopDataProvider extends ChangeNotifier {
     }
     notifyListeners();
   }
+
+//get the sum of total items present in the cart
+  getTotalItemsAddedtoCart() {
+    int total = 0;
+    for (var i = 0; i < _cartItems.length; i++) {
+      total += _cartItems[i].quantity;
+    }
+    return total.toString();
+  }
+  //No need to add notifyListeners here because the item has been already added to the cart and is being recorded.
 }
