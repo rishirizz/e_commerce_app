@@ -104,6 +104,6 @@ class ShopDataProvider extends ChangeNotifier {
       total += _cartItems[i].quantity;
     }
     return total.toString();
+    //No need to add notifyListeners here because the item has been already added to the cart and is being recorded.
   }
-  //No need to add notifyListeners here because the item has been already added to the cart and is being recorded.
 }
