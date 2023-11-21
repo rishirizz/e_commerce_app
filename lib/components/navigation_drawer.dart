@@ -49,7 +49,8 @@ class AppDrawer extends StatelessWidget {
               child: Consumer<ShopDataProvider>(
                 builder: (context, ShopDataProvider shopDataProvider, child) =>
                     Text(
-                  shopDataProvider.cartItems.length.toString(),
+                  Provider.of<ShopDataProvider>(context, listen: false)
+                      .getTotalItemsAddedtoCart(),
                   style: const TextStyle(
                     fontSize: 15,
                     fontWeight: FontWeight.bold,

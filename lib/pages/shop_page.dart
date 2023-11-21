@@ -30,9 +30,11 @@ class ShopPage extends StatelessWidget {
                   ),
                   child: Badge(
                     label: (shopDataProvider.cartItems.isNotEmpty)
-                        ? Text(Provider.of<ShopDataProvider>(context,
-                                listen: false)
-                            .getTotalItemsAddedtoCart())
+                        ? Text(
+                            Provider.of<ShopDataProvider>(context,
+                                    listen: false)
+                                .getTotalItemsAddedtoCart(),
+                          )
                         : null,
                     child: const Icon(
                       Icons.shopping_cart,
