@@ -65,11 +65,11 @@ class ShopDataProvider extends ChangeNotifier {
   List<Product> get cartItems => _cartItems;
 
   //add items to the cart
-  addItemToCart(Product product, String productName, int quantity) {
+  addItemToCart(Product product, String productName) {
     bool found = false;
     for (Product product in _cartItems) {
       if (product.name == productName) {
-        product.quantity += quantity;
+        product.quantity += 1;
         found = true;
         break;
       }

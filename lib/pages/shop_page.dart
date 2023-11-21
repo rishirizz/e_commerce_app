@@ -152,7 +152,7 @@ class ShopPage extends StatelessWidget {
                                               shopDataProvider.products[index],
                                               shopDataProvider
                                                   .products[index].name,
-                                              1, // add a qty each time
+                                              // add a qty each time
                                             );
                                           },
                                           child: const Icon(Icons.add),

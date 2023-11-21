@@ -41,26 +41,25 @@ class _CartPageState extends State<CartPage> {
                       ),
                       child: Padding(
                         padding: const EdgeInsets.all(20.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisSize: MainAxisSize.min,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              shopDataProvider.cartItems[index].name,
-                              style: TextStyle(
-                                color: Theme.of(context)
-                                    .colorScheme
-                                    .onPrimaryContainer,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 8,
-                            ),
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
                               children: [
+                                Text(
+                                  shopDataProvider.cartItems[index].name,
+                                  style: TextStyle(
+                                    color: Theme.of(context)
+                                        .colorScheme
+                                        .onPrimaryContainer,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 8,
+                                ),
                                 Text(
                                   '\u{20B9} ${shopDataProvider.cartItems[index].price.toStringAsFixed(2)}',
                                   style: TextStyle(
@@ -69,6 +68,54 @@ class _CartPageState extends State<CartPage> {
                                     fontSize: 18,
                                     fontWeight: FontWeight.w500,
                                   ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Qty',
+                                ),
+                                Row(
+                                  children: [
+                                    IconButton(
+                                      padding: EdgeInsets.zero,
+                                      icon: const Icon(
+                                        Icons.remove_circle,
+                                      ),
+                                      onPressed: () {
+                                        Provider.of<ShopDataProvider>(
+                                          context,
+                                          listen: false,
+                                        ).removeItemFromCart(shopDataProvider
+                                            .products[index].name);
+                                      },
+                                    ),
+                                    Text(
+                                      shopDataProvider.cartItems[index].quantity
+                                          .toString(),
+                                      style: const TextStyle(
+                                        fontWeight: FontWeight.bold,
+                                      ),
+                                    ),
+                                    IconButton(
+                                      padding: EdgeInsets.zero,
+                                      icon: const Icon(
+                                        Icons.add_circle,
+                                      ),
+                                      onPressed: () {
+                                        Provider.of<ShopDataProvider>(
+                                          context,
+                                          listen: false,
+                                        ).addItemToCart(
+                                          shopDataProvider.products[index],
+                                          shopDataProvider.products[index].name,
+                                        );
+                                      },
+                                    ),
+                                  ],
                                 ),
                               ],
                             ),
