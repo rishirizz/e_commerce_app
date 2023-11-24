@@ -14,54 +14,79 @@ class AppDrawer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Drawer(
       backgroundColor: Theme.of(context).colorScheme.background,
-      child: ListView(
+      child: Column(
         children: [
-          DrawerHeader(
-            child: Padding(
-              padding: const EdgeInsets.all(30.0),
-              child: Image.asset(
-                'assets/seller.png',
-                height: 10,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-            ),
-          ),
-          ShoppingListTile(
-            title: 'SHOP',
-            iconData: Icons.home,
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(
-                context,
-                ShopPage.routeName,
-              );
-            },
-            trailingWidget: null,
-          ),
-          ShoppingListTile(
-            title: 'CART',
-            iconData: Icons.shopping_cart,
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pushNamed(
-                context,
-                CartPage.routeName,
-              );
-            },
-            trailingWidget: CircleAvatar(
-              child: Consumer<ShopDataProvider>(
-                builder: (context, ShopDataProvider shopDataProvider, child) =>
-                    Text(
-                  Provider.of<ShopDataProvider>(context, listen: false)
-                      .getTotalItemsAddedtoCart(),
-                  style: const TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.bold,
+          ListView(
+            shrinkWrap: true,
+            children: [
+              DrawerHeader(
+                child: Padding(
+                  padding: const EdgeInsets.all(30.0),
+                  child: Image.asset(
+                    'assets/seller.png',
+                    height: 10,
+                    color: Theme.of(context).colorScheme.primary,
                   ),
                 ),
               ),
-            ),
+              ShoppingListTile(
+                title: 'SHOP',
+                iconData: Icons.home,
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(
+                    context,
+                    ShopPage.routeName,
+                  );
+                },
+                trailingWidget: null,
+              ),
+              ShoppingListTile(
+                title: 'CART',
+                iconData: Icons.shopping_cart,
+                onTap: () {
+                  Navigator.pop(context);
+                  Navigator.pushNamed(
+                    context,
+                    CartPage.routeName,
+                  );
+                },
+                trailingWidget: CircleAvatar(
+                  child: Consumer<ShopDataProvider>(
+                    builder:
+                        (context, ShopDataProvider shopDataProvider, child) =>
+                            Text(
+                      Provider.of<ShopDataProvider>(context, listen: false)
+                          .getTotalItemsAddedtoCart(),
+                      style: const TextStyle(
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
+          // const Spacer(),
+          // Padding(
+          //   padding: const EdgeInsets.only(bottom: 10.0),
+          //   child: Consumer<ThemeDataProvider>(
+          //     builder: (context, ThemeDataProvider themeDataProvider, child) =>
+          //         SwitchListTile(
+          //       title: Text(
+          //         (themeDataProvider.isDark == false)
+          //             ? 'Light theme'
+          //             : 'Dark Theme',
+          //       ),
+          //       value: themeDataProvider.isDark,
+          //       onChanged: (value) {
+          //         Provider.of<ThemeDataProvider>(context, listen: false)
+          //             .toggleTheme();
+          //       },
+          //     ),
+          //   ),
+          // ),
         ],
       ),
     );
