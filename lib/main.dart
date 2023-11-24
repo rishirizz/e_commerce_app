@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
           Consumer<ThemeDataProvider>(
         builder: (context, ThemeDataProvider themeDataProvider, child) =>
             MaterialApp(
+          debugShowCheckedModeBanner: false,
           theme: ThemeData(
             colorScheme: ColorScheme.fromSeed(
               seedColor: Colors.deepPurple,
