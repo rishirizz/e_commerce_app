@@ -119,26 +119,30 @@ class ShopPage extends StatelessWidget {
                                     ),
                                     Row(
                                       children: [
-                                        FloatingActionButton(
-                                          heroTag: null,
-                                          onPressed: () {
-                                            Provider.of<ShopDataProvider>(
-                                              context,
-                                              listen: false,
-                                            ).removeItemFromCart(
-                                                shopDataProvider
-                                                    .products[index].name);
-                                          },
-                                          child: const Icon(Icons.remove),
-                                        ),
+                                        if (shopDataProvider
+                                            .cartItems.isNotEmpty)
+                                          FloatingActionButton(
+                                            heroTag: null,
+                                            onPressed: () {
+                                              Provider.of<ShopDataProvider>(
+                                                context,
+                                                listen: false,
+                                              ).removeItemFromCart(
+                                                  shopDataProvider
+                                                      .products[index].name);
+                                            },
+                                            child: const Icon(Icons.remove),
+                                          ),
                                         const SizedBox(
                                           width: 10,
                                         ),
-                                        Text(
-                                          shopDataProvider
-                                              .products[index].quantity
-                                              .toString(),
-                                        ),
+                                        if (shopDataProvider
+                                            .cartItems.isNotEmpty)
+                                          Text(
+                                            shopDataProvider
+                                                .products[index].quantity
+                                                .toString(),
+                                          ),
                                         const SizedBox(
                                           width: 10,
                                         ),
