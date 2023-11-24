@@ -39,8 +39,11 @@ class _SplashPageState extends State<SplashPage> {
                 height: 20,
               ),
               const Text(
-                'SHOP-SHOP',
-                style: TextStyle(fontWeight: FontWeight.bold),
+                'QuickCart',
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 25,
+                ),
               ),
               const SizedBox(
                 height: 10,
