@@ -17,10 +17,13 @@ class AppDrawer extends StatelessWidget {
       child: ListView(
         children: [
           DrawerHeader(
-            child: Icon(
-              Icons.trolley,
-              size: 60,
-              color: Theme.of(context).colorScheme.onBackground,
+            child: Padding(
+              padding: const EdgeInsets.all(30.0),
+              child: Image.asset(
+                'assets/seller.png',
+                height: 10,
+                color: Theme.of(context).colorScheme.primary,
+              ),
             ),
           ),
           ShoppingListTile(

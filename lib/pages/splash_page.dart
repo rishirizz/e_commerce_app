@@ -30,9 +30,9 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.trolley,
-                size: 72,
+              Image.asset(
+               'assets/seller.png',
+                height: 72,
                 color: Theme.of(context).colorScheme.primary,
               ),
               const SizedBox(
